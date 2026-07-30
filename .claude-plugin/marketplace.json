@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tal-mashiah",
+  "description": "Tal Mashiah's personal Claude Code extensions - skills, commands, and agents shared across machines and sessions",
+  "owner": {
+    "name": "Tal Mashiah",
+    "email": "talmashiah@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "tal-toolkit",
+      "source": "./plugins/tal-toolkit",
+      "description": "Personal skills and commands: reusable workflows and conventions that should follow me into every session.",
+      "category": "productivity",
+      "author": {
+        "name": "Tal Mashiah"
+      }
+    }
+  ]
+}
