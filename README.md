@@ -57,7 +57,7 @@ See `plugins/tal-toolkit/skills/new-skill/references/authoring.md` for the full 
 
 `marketplace add` makes its own git clone at `~/.claude/plugins/marketplaces/tal-mashiah`, with `origin` pointing here. So this repo exists twice on a given machine: your working clone, and that cache.
 
-Edit your working clone only. `marketplace update` pulls into the cache, so edits made there are *not* wiped — they simply never reach GitHub or any other machine, and a conflict with an incoming pull can block future updates.
+Edit your working clone only. `marketplace update` pulls into the cache; a local edit there survives if it doesn't conflict, but if the pull can't apply, Claude Code discards the whole directory and re-clones, destroying it. Either way the edit never reaches GitHub or another machine — so cache edits are lost work at best and silently local-only at worst.
 
 Session start reads the cache off local disk, never the network. A push therefore changes nothing until `marketplace update`, and skills keep working offline.
 
