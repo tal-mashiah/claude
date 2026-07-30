@@ -53,6 +53,14 @@ See `plugins/tal-toolkit/skills/new-skill/references/authoring.md` for the full 
 | --- | --- |
 | `new-skill` | Authors new skills, commands and agents into this repo |
 
+## Two clones, one hub
+
+`marketplace add` makes its own git clone at `~/.claude/plugins/marketplaces/tal-mashiah`, with `origin` pointing here. So this repo exists twice on a given machine: your working clone, and that cache.
+
+Edit your working clone only. `marketplace update` pulls into the cache, so edits made there are *not* wiped — they simply never reach GitHub or any other machine, and a conflict with an incoming pull can block future updates.
+
+Session start reads the cache off local disk, never the network. A push therefore changes nothing until `marketplace update`, and skills keep working offline.
+
 ## Note
 
 This repo is public. No secrets, no credentials, no client-specific context — reference env var *names*, never values. Anything employer-specific belongs in that project's own `.claude/skills/`, not here.

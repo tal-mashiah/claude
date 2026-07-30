@@ -83,4 +83,4 @@ Commands cost zero context until invoked. Skills cost their description every se
 - **Secrets in the repo.** It is public. API keys go in env vars; reference the variable name, never the value.
 - **Client- or employer-specific detail** in a public repo. Keep those in a project-level `.claude/skills/` inside that repo instead.
 - **One giant skill covering five unrelated things.** Its description cannot trigger accurately. Split it.
-- **Editing the installed cache** at `~/.claude/plugins/marketplaces/tal-mashiah` instead of the git clone. Changes are lost on the next update.
+- **Editing the installed cache** at `~/.claude/plugins/marketplaces/tal-mashiah` instead of your own clone. The cache is a real clone of this repo and `marketplace update` pulls into it, so edits survive rather than erroring — they just never reach GitHub or any other machine, and a conflict with an incoming pull can block updates entirely. Verified behaviour, not a guess.
