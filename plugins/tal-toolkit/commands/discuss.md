@@ -12,8 +12,9 @@ hook in this plugin, so they do not decay over a long thread — follow the
 DISCUSS MODE block that arrives with each message. The statusline shows
 `● DISCUSS` while it is on.
 
-`/discuss off` ends it. So does saying "build it" or "go ahead", after which you
-must clear the flag before doing any work, as the injected rules describe.
+It ends when Tal says so — `off` on its own, "build it", "go ahead", "ok let's
+do a plan". The hook clears the flag itself and injects a DISCUSS MODE ENDED
+notice; nothing needs to be run by hand.
 
 ---
 

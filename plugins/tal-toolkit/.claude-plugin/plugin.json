@@ -1,7 +1,7 @@
 {
   "name": "tal-toolkit",
   "description": "Personal skills and commands: reusable workflows and conventions that should follow me into every session.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": {
     "name": "Tal Mashiah",
     "email": "talmashiah@gmail.com"

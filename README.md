@@ -67,7 +67,13 @@ flag file at `~/.claude/discuss-mode/<session-id>`, and two things read it:
 - the statusline shows `● DISCUSS` while it is on
 
 The flag is keyed by session id, so the mode never leaks between sessions or
-projects. `/discuss off` clears it.
+projects.
+
+It exits on `off` alone, on "build it" / "go ahead" / "ok let's do a plan", or
+on `/discuss off`. Exit matching is not a substring search — a message
+containing a question mark, or running longer than eight words, never counts.
+"should we go ahead with option 2?" has to stay in the mode, and failing open
+there would be worse than typing six characters.
 
 **On a new machine**, the hook works as soon as the plugin installs, but the
 statusline does not: `statusLine` lives in `~/.claude/settings.json` and needs a

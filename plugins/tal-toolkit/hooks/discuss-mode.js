@@ -37,6 +37,29 @@ Tal ends this by saying so ("build it", "go ahead"). Confirm once, then run
 \`node <this-script> off <session_id>\` to clear the mode before doing any work.
 Typing \`/discuss off\` also clears it.`;
 
+const ENDED = `DISCUSS MODE ENDED — Tal just closed it. The flag is already
+cleared; you do not need to run anything. Acknowledge in one line and get to
+work on what was asked.`;
+
+// Leading filler Tal puts in front of a real instruction: "ok let's do a plan".
+const FILLER = /^(ok(ay)?|alright|right|cool|nice|great|so|now|yes|yeah|yep|sure|perfect)[,!.\s]+/;
+
+// Exit phrases. Deliberately NOT a substring match: "should we go ahead with
+// option 2?" is a normal thing to say mid-discussion and must not kill the
+// mode. Real exits are short and imperative, so a question mark or a long
+// message disqualifies the match before any pattern is tried.
+function isExit(raw) {
+  let t = String(raw).trim().toLowerCase().replace(/[.!]+$/, '');
+  if (t.includes('?')) return false;
+  while (FILLER.test(t)) t = t.replace(FILLER, '');
+  if (t.split(/\s+/).filter(Boolean).length > 8) return false;
+  return (
+    /^(off|exit|done|stop|end|quit|build it|go ahead|do it|ship it)$/.test(t) ||
+    /^let'?s\s+(build|do|make|implement|start|write|plan|go)\b/.test(t) ||
+    /^(build|implement|make|write|do)\s+(it|this|that|a plan|the plan)\b/.test(t)
+  );
+}
+
 function readInput() {
   try {
     return JSON.parse(fs.readFileSync(0, 'utf8') || '{}');
@@ -85,6 +108,9 @@ if (mode === 'prompt') {
   } else if (invoked) {
     turnOn(id);
     inject(RULES);
+  } else if (isOn(id) && isExit(text)) {
+    turnOff(id);
+    inject(ENDED);
   } else if (isOn(id)) {
     inject(RULES);
   }
