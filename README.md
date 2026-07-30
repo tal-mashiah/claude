@@ -57,6 +57,34 @@ See `plugins/tal-toolkit/skills/new-skill/references/authoring.md` for the full 
 | --- | --- |
 | `/discuss` | Talk through ideas without Claude building or planning anything |
 
+## Discuss mode
+
+`/discuss` is a real mode, not a one-shot prompt. `hooks/discuss-mode.js` keeps a
+flag file at `~/.claude/discuss-mode/<session-id>`, and two things read it:
+
+- the `UserPromptSubmit` hook in `hooks/hooks.json` re-injects the rules on
+  **every** turn, so the frame does not decay over a long thread
+- the statusline shows `● DISCUSS` while it is on
+
+The flag is keyed by session id, so the mode never leaks between sessions or
+projects. `/discuss off` clears it.
+
+**On a new machine**, the hook works as soon as the plugin installs, but the
+statusline does not: `statusLine` lives in `~/.claude/settings.json` and needs a
+stable path, while the plugin cache path changes on every version bump. So copy
+the script out and point at the copy:
+
+```
+cp plugins/tal-toolkit/hooks/discuss-mode.js ~/.claude/discuss-mode.js
+```
+
+```json
+"statusLine": {
+  "type": "command",
+  "command": "node \"$HOME/.claude/discuss-mode.js\" status"
+}
+```
+
 ## Two clones, one hub
 
 `marketplace add` makes its own git clone at `~/.claude/plugins/marketplaces/tal-mashiah`, with `origin` pointing here. So this repo exists twice on a given machine: your working clone, and that cache.

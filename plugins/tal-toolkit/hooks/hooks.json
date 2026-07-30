@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/discuss-mode.js", "prompt"],
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
