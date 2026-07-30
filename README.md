@@ -53,6 +53,10 @@ See `plugins/tal-toolkit/skills/new-skill/references/authoring.md` for the full 
 | --- | --- |
 | `new-skill` | Authors new skills, commands and agents into this repo |
 
+| Command | What it does |
+| --- | --- |
+| `/discuss` | Talk through ideas without Claude building or planning anything |
+
 ## Two clones, one hub
 
 `marketplace add` makes its own git clone at `~/.claude/plugins/marketplaces/tal-mashiah`, with `origin` pointing here. So this repo exists twice on a given machine: your working clone, and that cache.
