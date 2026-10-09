@@ -15,6 +15,15 @@
       "author": {
         "name": "Tal Mashiah"
       }
+    },
+    {
+      "name": "english-coach",
+      "source": "./plugins/english-coach",
+      "description": "English practice: Claude ends each reply with corrections of your message and a corrected version, or \"Well done\".",
+      "category": "productivity",
+      "author": {
+        "name": "Tal Mashiah"
+      }
     }
   ]
 }

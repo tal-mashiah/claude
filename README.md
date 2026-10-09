@@ -9,6 +9,7 @@ On any machine with Claude Code and `gh` auth:
 ```
 /plugin marketplace add tal-mashiah/claude
 /plugin install tal-toolkit@tal-mashiah
+/plugin install english-coach@tal-mashiah
 ```
 
 Skills are then available in every session on that machine. Verify with `/plugin`.
@@ -26,12 +27,16 @@ After pushing a change here:
 ```
 .claude-plugin/marketplace.json   # this repo IS the marketplace; lists the plugins below
 plugins/
-└── tal-toolkit/
+├── tal-toolkit/
+│   ├── .claude-plugin/plugin.json
+│   ├── skills/<name>/SKILL.md    # model-invoked: Claude decides when to apply
+│   ├── commands/<name>.md        # user-invoked: /name
+│   ├── agents/<name>.md          # subagents with their own context
+│   └── hooks/hooks.json          # event-triggered automation
+└── english-coach/                # one always-on hook, its own plugin so it can be disabled alone
     ├── .claude-plugin/plugin.json
-    ├── skills/<name>/SKILL.md    # model-invoked: Claude decides when to apply
-    ├── commands/<name>.md        # user-invoked: /name
-    ├── agents/<name>.md          # subagents with their own context
-    └── hooks/hooks.json          # event-triggered automation
+    ├── hooks/
+    └── tests/
 ```
 
 Split `tal-toolkit` into several domain plugins (e.g. `tal-web`, `tal-workflow`) once it grows — that is just moving folders and adding entries to `marketplace.json`.
@@ -56,6 +61,10 @@ See `plugins/tal-toolkit/skills/new-skill/references/authoring.md` for the full 
 | Command | What it does |
 | --- | --- |
 | `/discuss` | Talk through ideas without Claude building or planning anything |
+
+| Plugin | What it does |
+| --- | --- |
+| `english-coach` | Ends each reply with an English check of my message |
 
 ## Discuss mode
 
@@ -90,6 +99,25 @@ cp plugins/tal-toolkit/hooks/discuss-mode.js ~/.claude/discuss-mode.js
   "command": "node \"$HOME/.claude/discuss-mode.js\" status"
 }
 ```
+
+## English coach
+
+For practicing English, mostly spoken into the microphone. A `UserPromptSubmit`
+hook (`plugins/english-coach/hooks/english-coach.js`) attaches a note to every
+message, so the rule never fades over a long thread. Claude answers as usual,
+then ends with an **English check**: at most four corrections, each with a short
+reason, and a corrected version of the whole message, or just "Well done".
+
+The note tells Claude to ignore fillers ("uh", "um"), repeated words,
+speech-to-text mishearings, capitals and punctuation, and to check only my own
+words, not code, logs or pasted text. The script itself skips slash commands
+and messages under four words of my own ("yes", "build it"), counting nothing
+inside fenced code or tagged blocks like `<pasted_content>`.
+
+It is always on, in every project. To turn it off, disable `english-coach` in
+`/plugin`; `tal-toolkit` keeps working.
+
+Tests: `node --test plugins/english-coach/tests/*.test.js`
 
 ## Two clones, one hub
 
