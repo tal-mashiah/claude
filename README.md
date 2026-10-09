@@ -106,7 +106,8 @@ For practicing English, mostly spoken into the microphone. A `UserPromptSubmit`
 hook (`plugins/english-coach/hooks/english-coach.js`) attaches a note to every
 message, so the rule never fades over a long thread. Claude answers as usual,
 then ends with an **English check**: at most four corrections, each with a short
-reason, and a corrected version of the whole message, or just "Well done".
+reason, and a corrected version of the whole message, or just "Well done". It
+comes as a quote block, so the grey bar beside it sets it apart from the answer.
 
 The note tells Claude to ignore fillers ("uh", "um"), repeated words,
 speech-to-text mishearings, capitals and punctuation, and to check only my own

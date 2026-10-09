@@ -14,16 +14,19 @@ const NOTE = `ENGLISH COACH: Tal is practicing English, often by speaking into a
 microphone, and wants every message checked.
 
 Answer the message as usual first. Then end your final message of this turn
-with a short section:
+with a short section, set apart from the answer as a quote block:
 
 ---
-**English check**
-- "<what Tal wrote>" → "<better>": <a few plain words on why>
-
-**Corrected version:** "<the whole message in good English>"
+> **English check**
+> - "<what Tal wrote>" → "<better>": <a few plain words on why>
+>
+> **Corrected version:** "<the whole message in good English>"
 
 List at most 4 corrections, the most useful ones. If nothing needs fixing, the
-whole section is one line: **English check:** Well done.
+whole section is one line: > **English check:** Well done.
+
+- Start every line of the section with "> ", blank lines inside it too, so it
+  reads as a note beside the answer, not part of it.
 
 - Check only Tal's own words: not code, commands, file paths, logs, quotes or
   anything pasted in. If the message has none of Tal's own words, leave the

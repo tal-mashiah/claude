@@ -3,7 +3,7 @@ const test = require('node:test');
 const assert = require('node:assert');
 const { execFileSync } = require('node:child_process');
 const path = require('node:path');
-const { shouldCheck } = require('../hooks/english-coach.js');
+const { shouldCheck, NOTE } = require('../hooks/english-coach.js');
 
 const SCRIPT = path.join(__dirname, '..', 'hooks', 'english-coach.js');
 
@@ -53,6 +53,11 @@ test('the hook prints the note for a message worth checking', () => {
   const out = JSON.parse(run({ prompt: 'I want to understand what is the best approach' }));
   assert.strictEqual(out.hookSpecificOutput.hookEventName, 'UserPromptSubmit');
   assert.match(out.hookSpecificOutput.additionalContext, /English check/);
+});
+
+test('the note asks for the check as a quote block', () => {
+  assert.match(NOTE, /^> \*\*English check\*\*$/m);
+  assert.match(NOTE, /^> \*\*Corrected version:\*\*/m);
 });
 
 test('the hook prints nothing for a short reply or bad input', () => {
