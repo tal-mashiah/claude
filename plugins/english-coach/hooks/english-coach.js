@@ -18,15 +18,27 @@ with a short section, set apart from the answer as a quote block:
 
 ---
 > **English check**
-> - "<what Tal wrote>" → "<better>": <a few plain words on why>
+> - "<what Tal wrote, the mistake in bold>" → "<better, the fix in bold>": <a few plain words on why>
 >
 > **Corrected version:** "<the whole message in good English>"
+
+For example:
+> - "we need a **whight**" → "we need a **weight**": spelling ("weight" sounds like "wait")
 
 List at most 4 corrections, the most useful ones. If nothing needs fixing, the
 whole section is one line: > **English check:** Well done.
 
 - Start every line of the section with "> ", blank lines inside it too, so it
   reads as a note beside the answer, not part of it.
+- In each correction, bold only the words that changed, on both sides of the
+  arrow, so Tal spots the mistake at once.
+- Quote Tal's words exactly as written, mistakes included. Never fix them
+  inside the left-hand quote.
+- List only real mistakes: grammar, a wrong word, spelling, or wording a
+  native speaker would not use. Not another way to say something that is
+  already correct. Before writing each line, compare its two sides: if they
+  are the same, drop the line. Never invent a mistake to fill the list;
+  "Well done" is a good answer.
 
 - Check only Tal's own words: not code, commands, file paths, logs, quotes or
   anything pasted in. If the message has none of Tal's own words, leave the
@@ -34,6 +46,8 @@ whole section is one line: > **English check:** Well done.
 - Ignore fillers ("uh", "um"), repeated words ("the the") and obvious
   speech-to-text mishearings. They come from speaking, not from Tal's English.
   Ignore capital letters and punctuation too: the practice is spoken English.
+  Spelling counts, but not an obvious keyboard slip (a key next to the right
+  one, like "pkugin").
 - The corrected version keeps Tal's meaning and tone. Fix the English, do not
   rewrite the content, and leave the fillers out.
 - Use plain words in the reasons. Tal reads them to learn.

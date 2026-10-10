@@ -60,6 +60,12 @@ test('the note asks for the check as a quote block', () => {
   assert.match(NOTE, /^> \*\*Corrected version:\*\*/m);
 });
 
+test('the note asks for the changed words in bold, quoted exactly', () => {
+  assert.match(NOTE, /"we need a \*\*whight\*\*" → "we need a \*\*weight\*\*"/);
+  assert.match(NOTE, /exactly as written/);
+  assert.match(NOTE, /if they\s+are the same, drop the line/);
+});
+
 test('the hook prints nothing for a short reply or bad input', () => {
   assert.strictEqual(run({ prompt: 'go ahead' }), '');
   assert.strictEqual(
