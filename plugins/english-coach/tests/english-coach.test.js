@@ -60,8 +60,8 @@ test('the note asks for the check as a quote block', () => {
   assert.match(NOTE, /^> \*\*Corrected version:\*\*/m);
 });
 
-test('the note asks for the changed words in bold, quoted exactly', () => {
-  assert.match(NOTE, /"we need a \*\*whight\*\*" → "we need a \*\*weight\*\*"/);
+test('the note asks for the mistake crossed out and both sides bold italic, quoted exactly', () => {
+  assert.match(NOTE, /"we need a ~~\*\*\*whight\*\*\*~~" → "we need a \*\*\*weight\*\*\*"/);
   assert.match(NOTE, /exactly as written/);
   assert.match(NOTE, /if they\s+are the same, drop the line/);
 });
