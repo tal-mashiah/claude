@@ -11,7 +11,7 @@ Add a new capability to Tal's personal marketplace repo so it loads in every ses
 
 The marketplace repo is `tal-mashiah/claude`. Find the working copy before editing:
 
-1. Check `E:\claude` (the usual clone on this Windows machine).
+1. Check `C:\claude` (the usual clone on this Windows machine).
 2. Otherwise check `~/.claude/plugins/marketplaces/tal-mashiah` — that is the *installed cache*, itself a git clone of this repo. **Never edit there.** `marketplace update` pulls into it; an edit survives if it doesn't conflict, but a pull that can't apply makes Claude Code discard the directory and re-clone, destroying it. Either way it never reaches GitHub. Clone the repo fresh instead.
 3. If no clone exists: `gh repo clone tal-mashiah/claude`.
 
