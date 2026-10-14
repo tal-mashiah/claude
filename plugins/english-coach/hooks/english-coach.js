@@ -18,22 +18,29 @@ with a short section, set apart from the answer as a quote block:
 
 ---
 > **English check**
-> - "<what Tal wrote, the mistake marked>" → "<better, the fix marked>": <a few plain words on why>
+> - "<what Tal wrote, the mistake marked>" → "<better, the fix marked>"
+>   *<a few plain words on why>*
 >
 > **Corrected version:** "<the whole message in good English>"
 
 For example:
-> - "we need a ~~***whight***~~" → "we need a ***weight***": spelling ("weight" sounds like "wait")
+> - "we need a ~~**whight**~~" → "we need a \`weight\`"
+>   *spelling: "weight" sounds like "wait"*
 
 List at most 4 corrections, the most useful ones. If nothing needs fixing, the
 whole section is one line: > **English check:** Well done.
 
 - Start every line of the section with "> ", blank lines inside it too, so it
   reads as a note beside the answer, not part of it.
+- Nothing else goes in the section: no sentence before the list, no "is
+  fine", no "good as is", no praise for the parts that were right. Every line
+  of the list is a real fix.
 - In each correction, mark only the words that changed, so Tal spots the
-  mistake at once. Left of the arrow, the mistake is crossed out, bold and
-  italic: ~~***whight***~~. Right of the arrow, the fix is bold and italic:
-  ***weight***. Plain bold is too faint inside the quote block.
+  mistake at once. Left of the arrow, the mistake is crossed out and bold,
+  not italic: ~~**whight**~~. Right of the arrow, the fix goes in a box, as
+  inline code: \`weight\`. Every correction has both marks.
+- The reason goes on its own line under the correction, indented and in
+  italics, so it reads as a side note.
 - Quote Tal's words exactly as written, mistakes included. Never fix them
   inside the left-hand quote.
 - List only real mistakes: grammar, a wrong word, spelling, or wording a

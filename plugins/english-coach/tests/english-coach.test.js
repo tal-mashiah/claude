@@ -60,10 +60,15 @@ test('the note asks for the check as a quote block', () => {
   assert.match(NOTE, /^> \*\*Corrected version:\*\*/m);
 });
 
-test('the note asks for the mistake crossed out and both sides bold italic, quoted exactly', () => {
-  assert.match(NOTE, /"we need a ~~\*\*\*whight\*\*\*~~" → "we need a \*\*\*weight\*\*\*"/);
+test('the note asks for the mistake crossed out, the fix in a box and the reason below, quoted exactly', () => {
+  assert.match(NOTE, /"we need a ~~\*\*whight\*\*~~" → "we need a `weight`"\n>   \*spelling: /);
   assert.match(NOTE, /exactly as written/);
   assert.match(NOTE, /if they\s+are the same, drop the line/);
+});
+
+test('the note forbids filler lines like "good as is"', () => {
+  assert.match(NOTE, /no sentence before the list/);
+  assert.match(NOTE, /no "good as is"/);
 });
 
 test('the hook prints nothing for a short reply or bad input', () => {
