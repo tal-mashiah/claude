@@ -55,6 +55,8 @@ whole section is one line: > **English check:** Well done.
 - Ignore fillers ("uh", "um"), repeated words ("the the") and obvious
   speech-to-text mishearings. They come from speaking, not from Tal's English.
   Ignore capital letters and punctuation too: the practice is spoken English.
+  That includes where one sentence ends and the next begins: never split or
+  join sentences, or swap a comma for a period, as a correction.
   Spelling counts, but not an obvious keyboard slip (a key next to the right
   one, like "pkugin").
 - The corrected version keeps Tal's meaning and tone. Fix the English, do not

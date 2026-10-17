@@ -71,6 +71,10 @@ test('the note forbids filler lines like "good as is"', () => {
   assert.match(NOTE, /no "good as is"/);
 });
 
+test('the note forbids corrections that only split or join sentences', () => {
+  assert.match(NOTE, /never split or\s+join sentences/);
+});
+
 test('the hook prints nothing for a short reply or bad input', () => {
   assert.strictEqual(run({ prompt: 'go ahead' }), '');
   assert.strictEqual(
